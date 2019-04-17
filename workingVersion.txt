@@ -1,0 +1,351 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+filetype plugin on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle/Vundle.vim')
+" set the runtime path to include Vundle and initialize
+"
+Plugin 'VundleVim/Vundle.vim'
+let g:pymode_python = 'python3'
+Plugin 'mattn/emmet-vim'
+
+" set the runtime path to include Vundle and initialize
+
+" let Vundle manage Vundle, required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" let Vundle manage Vundle, required
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" git repos on your local machine (i.e. when working on your own plugin)
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+execute pathogen#infect()
+
+
+
+
+
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" ================ General Config ====================
+
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+"turn on syntax highlighting
+syntax on
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all 
+" the plugins.
+let mapleader=","
+
+" ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+" NOT WORKING: Didnt work when yanked right out of YADR
+"silent !mkdir ~/.vim/backups > /dev/null 2>&1
+"set undodir=~/.vim/backups
+"set undofile
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+filetype plugin on
+
+filetype indent on
+
+" Display tabs and trailing spaces visually
+set wrap       "Wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" ================ Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ========================================
+" Vim plugin configuration
+" ========================================
+"
+" This file contains the list of plugin installed using vundle plugin manager.
+" Once you've updated the list of plugin, you can run vundle update by issuing
+" the command :BundleInstall from within vim or directly invoking it from the
+" command line with the following syntax:
+" vim --noplugin -u vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall
+" Filetype off is required by vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+" let Vundle manage Vundle (required)
+"
+syntax on
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""" MY VUNDLES """""""""""""""""""""""
+" HEAVILY/MOSTLY taken from https://github.com/skwp/dotfiles 
+
+
+" Make Git pervasive in vim ( :Gblame + Glog + many more )
+
+" file navigator gutter
+
+" awesome syntax highlighting
+" TODO: Figure out how to enable correctly for Ruby.
+
+" Command+T replacement (ctrl+P)
+
+" Rails plugin ( :A mapping! )
+
+
+" Make it look amazing 
+
+" Pimped out bar at the bottom of current buffer
+
+" Highlights class names + methods more brightly
+" Handy for seeing syntax shape before your eyes
+
+" Search everything in the current dir via :Ack
+
+" Enable Markdown Preview + GitHub flavored markdown
+
+" TODO: Figure out how to do indents intelligently
+" Bundle "austintaylor/vim-indentobject"
+
+" Open a shell within vim via :ConqueTerm
+
+" Syntax highlighting for .bats files
+
+" Open up a bash shell quickly in the current window
+map <Leader>s <esc>:ConqueTermSplit bash<cr>
+
+" Make Ctrl+w o, function with toggle niceness
+
+
+" requires exuberant ctags
+
+" END OF VUNDLE PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+" Color theme (drawing from altercation/vim-colors-solarized Bundle)
+syntax enable
+set background=dark
+colorscheme desert
+color desert
+
+" For MacVim
+set guifont=Monaco:h16
+
+
+" NERDTree Mappins
+" Open Nerd Tree with <Leader>n
+map <Leader>n <esc>:NERDTreeToggle<cr>
+
+" Reveal current file in NERDTree with <Leader>r
+map <Leader>r <esc>:NERDTreeFind<cr>
+
+" ===== SYNTASTIC 
+"mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+"automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+"show the error list automatically
+let g:syntastic_auto_loc_list=1
+"don't care about warnings
+let g:syntastic_quiet_warnings=0
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+" Coffee Script Compilation
+" Compile the current file into a vertcally split screen
+map <Leader>cs <esc>:CoffeeCompile vert<cr>
+
+" ====== Make tabs be addressable via Apple+1 or 2 or 3, etc
+" Use numbers to pick the tab you want (like iTerm)
+map <silent> <D-1> :tabn 1<cr>
+map <silent> <D-2> :tabn 2<cr>
+map <silent> <D-3> :tabn 3<cr>
+map <silent> <D-4> :tabn 4<cr>
+map <silent> <D-5> :tabn 5<cr>
+map <silent> <D-6> :tabn 6<cr>
+map <silent> <D-7> :tabn 7<cr>
+map <silent> <D-8> :tabn 8<cr>
+map <silent> <D-9> :tabn 9<cr>
+" ===== Add some shortcuts for ctags
+map <Leader>tt <esc>:TagbarToggle<cr>
+" TODO later, get open tag in new tab working
+" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+" map <C-\>:tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"map <A-]>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Support for github flavored markdown
+" via https://github.com/jtratner/vim-flavored-markdown
+" with .md extensions
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+
+
+
+
+
+
+" Vim syntax file
+" Language: HDL
+" Maintainer: Severyn Kozak
+" Latest Revision: 11 November 2014
+
+if version < 600
+  syntax clear
+endif
+
+" The `.hdl` extension is reserved for the `vhdl` filetype, and, by the time
+" this plugin is sourced, Vim has already loaded the `vhdl` ftplugin files,
+" which contain some undesired settings. The fullproof way to ignore them is to
+" prevent Vim from ever setting the `vhdl` filetype, which can only be done by
+" having the user specify the following:
+"
+"   au BufNewFile,BufRead *.hdl setfiletype hdl
+"
+" in their vimrc, which is messy. Best to let the plugin do the work just by
+" explicitly overriding the settings that we don't want, like the following.
+setl indentexpr=
+setl formatoptions+=or
+let b:current_syntax = "hdl"
+let did_load_filetypes = 1
+
+syn match _hdl_comment_inline "\/\/.*"
+syn match _hdl_delimiter "[,;:.]"
+syn match _hdl_assignment "="
+set number
+syn match _hdl_number "\v(\w)@<!\d+"
+syn match _hdl_surrounding "[[\](){}]"
+syn match _hdl_pin_name "\a[a-zA-Z0-9]*\ze=" contains=ALL
+syn region _hdl_comment_block start="/\*" end="*/"
+syn keyword _hdl_builtin_chip Add16 ALU And And16 ARegister Bit DFF DMux
+  \ DMux4Way DMux8Way DRegister Mux4Way16 Mux8Way16 FullAdder HalfAdder Inc16
+  \ Keyboard Mux Mux16 Or Or16 Or8Way PC RAM RAM16K RAM4K RAM512 RAM64 ROM32K
+  \ Screen Xor RAM8 Register RegisterWithGUI Nand Not Not16
+syn keyword _hdl_section CHIP PARTS IN OUT
+
+syn keyword _hdl_constant true false
+
+hi link _hdl_comment_block Comment
+hi link _hdl_comment_inline Comment
+hi link _hdl_builtin_chip Constant
+hi link _hdl_section Label
+hi link _hdl_delimiter Comment
+hi link _hdl_surrounding Delimiter
+hi link _hdl_number Number
+hi link _hdl_constant Constant
+hi link _hdl_assignment Operator
+hi link _hdl_pin_name Identifier
+
+
+
+
+
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+
+call vundle#end()
+
+
+
+
